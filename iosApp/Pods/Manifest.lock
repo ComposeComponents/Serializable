@@ -1,0 +1,16 @@
+PODS:
+  - testkmp (1.0)
+
+DEPENDENCIES:
+  - testkmp (from `../testkmp`)
+
+EXTERNAL SOURCES:
+  testkmp:
+    :path: "../testkmp"
+
+SPEC CHECKSUMS:
+  testkmp: 3c3b70fac0349a17d8203408dba6aaee09658b2f
+
+PODFILE CHECKSUM: 6711a40e165aa83c05e5ce759a4c81cb5d42c350
+
+COCOAPODS: 1.15.2

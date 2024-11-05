@@ -37,6 +37,10 @@ kotlin {
             isStatic = true
         }
     }
+
+    androidTarget {
+        publishLibraryVariants("release")
+    }
     
     sourceSets {
         commonMain.dependencies {
