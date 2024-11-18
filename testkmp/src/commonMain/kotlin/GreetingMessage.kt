@@ -1,5 +1,5 @@
-import cl.emilym.kmp.serializable.Serializable
+import cl.emilym.kmp.serializable.JavaSerializable
 
 data class GreetingMessage(
     val message: String
-): Serializable
+): JavaSerializable

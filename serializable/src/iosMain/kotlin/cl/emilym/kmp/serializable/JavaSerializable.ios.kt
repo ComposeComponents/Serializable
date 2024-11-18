@@ -1,3 +1,3 @@
 package cl.emilym.kmp.serializable
 
-actual interface Serializable
+actual interface JavaSerializable
