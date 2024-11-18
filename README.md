@@ -26,9 +26,9 @@ implementation("cl.emilym.kmp:serializable:<latest>")
 ## Usage
 
 ```kotlin
-import cl.emilym.kmp.serializable.Serializable
+import cl.emilym.kmp.serializable.JavaSerializable
 
 data class Thing(
     val data: String
-): Serializable
+): JavaSerializable
 ```
