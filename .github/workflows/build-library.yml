@@ -318,8 +318,7 @@ jobs:
     needs:
       - version
       - release
-      - build-android
-      - build-ios
+      - build
     runs-on: ubuntu-latest
     strategy:
       matrix:
