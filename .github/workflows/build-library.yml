@@ -260,7 +260,7 @@ jobs:
       if: contains(toJSON(matrix.configuration), 'output0')
       run: mv ${{ matrix.configuration.output0.location }} ./${{ matrix.configuration.output0.name }}
     - name: Zip if Needed (Output 0)
-      if: contains(toJSON(matrix.configuration), 'output0') && matrix.configuration.needsZip
+      if: contains(toJSON(matrix.configuration), 'output0') && matrix.configuration.output0.needsZip
       run: zip -r ${{ matrix.configuration.output0.name }}.zip ./${{ matrix.configuration.output0.name }}
     - name: Upload Artifact (Output 0)
       if: contains(toJSON(matrix.configuration), 'output0')
@@ -272,7 +272,7 @@ jobs:
       if: contains(toJSON(matrix.configuration), 'output1')
       run: mv ${{ matrix.configuration.output1.location }} ./${{ matrix.configuration.output1.name }}
     - name: Zip if Needed (Output 1)
-      if: contains(toJSON(matrix.configuration), 'output1') && matrix.configuration.needsZip
+      if: contains(toJSON(matrix.configuration), 'output1') && matrix.configuration.output1.needsZip
       run: zip -r ${{ matrix.configuration.output1.name }}.zip ./${{ matrix.configuration.output1.name }}
     - name: Upload Artifact (Output 1)
       if: contains(toJSON(matrix.configuration), 'output1')
