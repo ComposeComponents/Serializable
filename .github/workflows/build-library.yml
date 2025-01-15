@@ -46,6 +46,7 @@ jobs:
       - version
     runs-on: ${{ matrix.configuration.os }}
     strategy:
+      fail-fast: false
       matrix:
         configuration:
           - command: :serializable:linkPodReleaseFrameworkIosX64
