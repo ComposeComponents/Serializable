@@ -275,6 +275,7 @@ jobs:
         if: contains(toJSON(matrix.configuration), 'output0') && matrix.configuration.needsZip
         run: zip -r ${{ matrix.configuration.output0.name }}.zip ./${{ matrix.configuration.output0.name }}
       - name: Upload Artifact (Output 0)
+        if: contains(toJSON(matrix.configuration), 'output0')
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.configuration.output0.key }}
@@ -286,6 +287,7 @@ jobs:
         if: contains(toJSON(matrix.configuration), 'output1') && matrix.configuration.needsZip
         run: zip -r ${{ matrix.configuration.output1.name }}.zip ./${{ matrix.configuration.output1.name }}
       - name: Upload Artifact (Output 1)
+        if: contains(toJSON(matrix.configuration), 'output1')
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.configuration.output1.key }}
