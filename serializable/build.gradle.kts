@@ -2,6 +2,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import com.vanniktech.maven.publish.SonatypeHost
 import com.vanniktech.maven.publish.KotlinMultiplatform
 import com.vanniktech.maven.publish.JavadocJar
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+import org.gradle.internal.os.OperatingSystem
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -14,18 +16,54 @@ plugins {
 val desc = "Use `Serialize` in your Kotlin Multiplatform Projects"
 
 kotlin {
-    androidTarget {
-        compilations.all {
-            compileTaskProvider.configure {
-                compilerOptions {
-                    jvmTarget.set(JvmTarget.JVM_11)
+    val currentOs = OperatingSystem.current()
+    val strictBuild: Boolean by project.extra {
+        (project.findProperty("build.strictPlatform") as? String)?.toBooleanStrictOrNull() ?: false
+    }
+
+    if (!strictBuild || currentOs.isLinux) {
+        androidTarget {
+            publishLibraryVariants("release")
+            compilations.all {
+                compileTaskProvider.configure {
+                    compilerOptions {
+                        jvmTarget.set(JvmTarget.JVM_11)
+                    }
                 }
             }
         }
+        jvm()
+
+        js(IR) {
+            browser()
+            nodejs()
+            useCommonJs()
+            generateTypeScriptDefinitions()
+        }
+        @OptIn(ExperimentalWasmDsl::class)
+        wasmJs()
+        @OptIn(ExperimentalWasmDsl::class)
+        wasmWasi()
+
+        mingwX64()
+
+        linuxX64()
+        linuxArm64()
     }
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+    if (!strictBuild || currentOs.isMacOsX) {
+        iosX64()
+        iosArm64()
+        iosSimulatorArm64()
+        macosX64()
+        macosArm64()
+        watchosSimulatorArm64()
+        watchosX64()
+        watchosArm32()
+        watchosArm64()
+        tvosSimulatorArm64()
+        tvosX64()
+        tvosArm64()
+    }
 
     cocoapods {
         summary = desc
@@ -36,10 +74,6 @@ kotlin {
             baseName = "serializable"
             isStatic = true
         }
-    }
-
-    androidTarget {
-        publishLibraryVariants("release")
     }
     
     sourceSets {
