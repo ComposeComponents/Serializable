@@ -232,7 +232,7 @@ jobs:
               name: serializable-wasm-wasi.klib
               location: ./serializable/build/libs/serializable-wasm-wasi-${{ needs.version.outputs.version }}.klib
               needsZip: false
-          - command: :serializable:compileKotlinMing64WX64
+          - command: :serializable:compileKotlinMingWX64
             os: ubuntu-latest
             output0:
               key: serializable-mingwX64-klib
