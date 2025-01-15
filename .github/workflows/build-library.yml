@@ -46,7 +46,6 @@ jobs:
       - version
     runs-on: ${{ matrix.configuration.os }}
     strategy:
-      fail-fast: false
       matrix:
         configuration:
           - command: :serializable:linkPodReleaseFrameworkIosX64
@@ -217,21 +216,21 @@ jobs:
             output0:
               key: serializable-jvm-jar
               name: serializable-jvm.jar
-              location: ./serializable/build//libs/serializable-jvm-${{ needs.version.outputs.version }}.jar
+              location: ./serializable/build/libs/serializable-jvm-${{ needs.version.outputs.version }}.jar
               needsZip: false
           - command: :serializable:wasmJsJar
             os: ubuntu-latest
             output0:
               key: serializable-wasm-js-klib
               name: serializable-wasm-js.klib
-              location: ./serializable/build//libs/serializable-wasm-js-${{ needs.version.outputs.version }}.klib
+              location: ./serializable/build/libs/serializable-wasm-js-${{ needs.version.outputs.version }}.klib
               needsZip: false
           - command: :serializable:wasmWasiJar
             os: ubuntu-latest
             output0:
               key: serializable-wasm-wasi-klib
               name: serializable-wasm-wasi.klib
-              location: ./serializable/build//libs/serializable-wasm-wasi-${{ needs.version.outputs.version }}.klib
+              location: ./serializable/build/libs/serializable-wasm-wasi-${{ needs.version.outputs.version }}.klib
               needsZip: false
           - command: :serializable:compileKotlinMing64WX64
             os: ubuntu-latest
@@ -268,24 +267,26 @@ jobs:
       - name: Build with Gradle
         env:
           ORG_GRADLE_PROJECT_version: ${{ needs.version.outputs.version }}
-        run: ./gradlew ${{ matrix.configuration.buildCommand}}
-      - name: Rename Artifact
+        run: ./gradlew ${{ matrix.configuration.command }}
+      - name: Rename Artifact (Output 0)
         if: contains(toJSON(matrix.configuration), 'output0')
         run: mv ${{ matrix.configuration.output0.location }} ./${{ matrix.configuration.output0.name }}
-      - name: Zip if needed
+      - name: Zip if Needed (Output 0)
         if: contains(toJSON(matrix.configuration), 'output0') && matrix.configuration.needsZip
         run: zip -r ${{ matrix.configuration.output0.name }}.zip ./${{ matrix.configuration.output0.name }}
-      - uses: actions/upload-artifact@v4
+      - name: Upload Artifact (Output 0)
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.configuration.output0.key }}
           path: ./${{ matrix.configuration.output0.name }}${{ matrix.configuration.output0.needsZip && '.zip' || '' }}
-      - name: Rename Artifact
+      - name: Rename Artifact (Output 1)
         if: contains(toJSON(matrix.configuration), 'output1')
         run: mv ${{ matrix.configuration.output1.location }} ./${{ matrix.configuration.output1.name }}
-      - name: Zip if needed
+      - name: Zip if Needed (Output 1)
         if: contains(toJSON(matrix.configuration), 'output1') && matrix.configuration.needsZip
         run: zip -r ${{ matrix.configuration.output1.name }}.zip ./${{ matrix.configuration.output1.name }}
-      - uses: actions/upload-artifact@v4
+      - name: Upload Artifact (Output 1)
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.configuration.output1.key }}
           path: ./${{ matrix.configuration.output1.name }}${{ matrix.configuration.output1.needsZip && '.zip' || '' }}
