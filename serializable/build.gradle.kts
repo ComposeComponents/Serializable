@@ -17,6 +17,13 @@ val desc = "Use `Serialize` in your Kotlin Multiplatform Projects"
 kotlin {
     androidTarget {
         publishLibraryVariants("release")
+        compilations.all {
+            compileTaskProvider.configure {
+                compilerOptions {
+                    jvmTarget.set(JvmTarget.JVM_11)
+                }
+            }
+        }
     }
     jvm()
 
