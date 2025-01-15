@@ -58,7 +58,7 @@ jobs:
             output1:
               key: serializable-iosX64-klib
               name: serializable-iosX64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/iosX64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:linkPodReleaseFrameworkIosArm64
             os: macos-latest
@@ -70,7 +70,7 @@ jobs:
             output1:
               key: serializable-iosArm64-klib
               name: serializable-iosArm64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/iosArm64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:linkPodReleaseFrameworkIosSimulatorArm64
             os: macos-latest
@@ -82,7 +82,7 @@ jobs:
             output1:
               key: serializable-iosSimulatorArm64-klib
               name: serializable-iosSimulatorArm64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/iosSimulatorArm64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:linkPodReleaseFrameworkMacosX64
             os: macos-latest
@@ -94,7 +94,7 @@ jobs:
             output1:
               key: serializable-macosX64-klib
               name: serializable-macosX64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/macosX64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:linkPodReleaseFrameworkMacosArm64
             os: macos-latest
@@ -106,7 +106,7 @@ jobs:
             output1:
               key: serializable-macosArm64-klib
               name: serializable-macosArm64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/macosArm64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:linkPodReleaseFrameworkMacosSimulatorArm64
             os: macos-latest
@@ -118,7 +118,7 @@ jobs:
             output1:
               key: serializable-macosSimulatorArm64-klib
               name: serializable-macosSimulatorArm64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/macosSimulatorArm64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:linkPodReleaseFrameworkWatchosX64
             os: macos-latest
@@ -130,7 +130,7 @@ jobs:
             output1:
               key: serializable-watchosX64-klib
               name: serializable-watchosX64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/watchosX64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:linkPodReleaseFrameworkWatchosArm32
             os: macos-latest
@@ -142,7 +142,7 @@ jobs:
             output1:
               key: serializable-watchosArm32-klib
               name: serializable-watchosArm32.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/watchosArm32/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:linkPodReleaseFrameworkWatchosArm64
             os: macos-latest
@@ -154,7 +154,7 @@ jobs:
             output1:
               key: serializable-watchosArm64-klib
               name: serializable-watchosArm64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/watchosArm64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:linkPodReleaseFrameworkWatchosSimulatorArm64
             os: macos-latest
@@ -166,7 +166,7 @@ jobs:
             output1:
               key: serializable-watchosSimulatorArm64-klib
               name: serializable-watchosSimulatorArm64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/watchosSimulatorArm64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:linkPodReleaseFrameworkTvosX64
             os: macos-latest
@@ -178,7 +178,7 @@ jobs:
             output1:
               key: serializable-tvosX64-klib
               name: serializable-tvosX64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/tvosX64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:linkPodReleaseFrameworkTvosArm64
             os: macos-latest
@@ -190,7 +190,7 @@ jobs:
             output1:
               key: serializable-tvosArm64-klib
               name: serializable-tvosArm64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/tvosArm64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:linkPodReleaseFrameworkTvosSimulatorArm64
             os: macos-latest
@@ -202,7 +202,7 @@ jobs:
             output1:
               key: serializable-tvosSimulatorArm64-klib
               name: serializable-tvosSimulatorArm64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/tvosSimulatorArm64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:assembleRelease
             os: ubuntu-latest
@@ -237,14 +237,14 @@ jobs:
             output0:
               key: serializable-mingwX64-klib
               name: serializable-mingwX64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/mingwX64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:compileKotlinLinuxX64
             os: ubuntu-latest
             output0:
               key: serializable-linuxX64-klib
               name: serializable-linuxX64.klib
-              location: ./serializable/build/classes/kotlin/linuxArm64/main/klib/serializable.klib
+              location: ./serializable/build/classes/kotlin/linuxX64/main/klib/serializable.klib
               needsZip: false
           - command: :serializable:compileKotlinLinuxArm64
             os: ubuntu-latest
@@ -474,4 +474,4 @@ jobs:
           -Ppom.scm.connection="scm:git:git://github.com/${{ github.repository }}" \
           -Ppom.scm.developerConnection="scm:git:ssh://github.com/${{ github.repository }}" \
           -Ppom.scm.url="https://github.com/${{ github.repository }}" \
-          ${{ matrix.module }}:publishAndReleaseToMavenCentral --no-configuration-cache
+          ${{ matrix.module }}:publishToMavenCentral --no-configuration-cache
